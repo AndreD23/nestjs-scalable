@@ -1,0 +1,12 @@
+services:
+  mongodb:
+    container_name: mongodb
+    image: mongo:7.0.12
+    restart: always
+    shm_size: 256mb
+    ports:
+      - 27017:27017
+    env_file:
+      - ./docker/environments/mongodb.env
+    volumes:
+      - ./docker/db/mongodb:/data/mongodb
