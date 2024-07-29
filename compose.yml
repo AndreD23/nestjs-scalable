@@ -1,4 +1,18 @@
 services:
+  reservations:
+    container_name: reservations
+    build:
+      context: ./apps/reservations
+      dockerfile: Dockerfile
+      target: development
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+    env_file:
+      - ./docker/environments/mongodb.env
+
   mongodb:
     container_name: mongodb
     image: mongo:7.0.12
